@@ -134,12 +134,12 @@
 
         .ticker-left {
             left: 0;
-            bottom: 0;
+            bottom: -100%; /* Start außerhalb des Bildschirms */
         }
 
         .ticker-right {
             right: 0;
-            bottom: 0;
+            bottom: -100%; /* Start außerhalb des Bildschirms */
         }
     </style>
 </head>
@@ -188,48 +188,39 @@
     </div>
 
     <script>
-        // Ticker Animations
+        // Ticker Animation für alle Geräte
         window.addEventListener('load', () => {
             const tickerLeft = document.querySelector('.ticker-left');
             const tickerRight = document.querySelector('.ticker-right');
             
-            // Set initial positions of the ticker
-            tickerLeft.style.bottom = '0px';
-            tickerRight.style.bottom = '0px';
+            // Setze Anfangspositionen
+            const tickerHeight = 50; // Höhe des Tickers
+            let leftY = window.innerHeight; // Startposition (unten)
+            let rightY = window.innerHeight; // Startposition (unten)
 
-            // Set the height of the ticker text
-            const tickerHeight = 50;
-
-            // Initial Y positions of the tickers (start below the screen)
-            let leftY = window.innerHeight;
-            let rightY = window.innerHeight;
-
-            // Update the tickers' position continuously
+            // Funktion für die Animation
             function animateTicker() {
+                // Bewege Ticker von unten nach oben
                 leftY -= 1;
                 rightY -= 1;
 
-                // Reset the ticker when it goes out of view
-                if (leftY < -tickerHeight) {
-                    leftY = window.innerHeight;
-                }
-                if (rightY < -tickerHeight) {
-                    rightY = window.innerHeight;
-                }
+                // Wenn der Ticker aus dem sichtbaren Bereich verschwindet, zurücksetzen
+                if (leftY < -tickerHeight) leftY = window.innerHeight;
+                if (rightY < -tickerHeight) rightY = window.innerHeight;
 
-                // Apply the new Y positions
+                // Wende die neue Position an
                 tickerLeft.style.transform = `translateY(${leftY}px)`;
                 tickerRight.style.transform = `translateY(${rightY}px)`;
 
-                // Call the animation function on the next frame
+                // Animation erneut aufrufen
                 requestAnimationFrame(animateTicker);
             }
 
-            // Start the animation
+            // Starte die Animation
             animateTicker();
         });
 
-        // Fire Animation (unchanged from original)
+        // Fire Animation (unverändert)
         const canvas = document.getElementById('fire');
         const ctx = canvas.getContext('2d');
         let width, height;
