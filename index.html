@@ -122,36 +122,36 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
 
-        /* Ticker Styles */
-        .ticker {
-            position: absolute;
-            color: var(--primary-color);
-            font-size: 24px;
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            opacity: 1;
-            animation: scroll-up 5s linear infinite;
-        }
-
-        .ticker-left {
-            left: 0;
-            top: 10%;
-        }
-
-        .ticker-right {
-            right: 0;
-            top: 10%;
-        }
-
         @keyframes scroll-up {
-            0% {
-                transform: translateY(100%);
-            }
-            100% {
-                transform: translateY(-100%);
-            }
-        }
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.ticker {
+    position: absolute;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0.8;
+    animation: scroll-up 5s linear infinite;
+}
+
+.ticker-left {
+    left: 0;
+    bottom: 0; /* Startet am unteren Rand */
+}
+
+.ticker-right {
+    right: 0;
+    bottom: 0; /* Startet ebenfalls am unteren Rand */
+}
+
     </style>
 </head>
 <body>
