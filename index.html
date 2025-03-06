@@ -25,6 +25,7 @@
             justify-content: center;
             height: 100vh;
             position: relative;
+            overflow-y: scroll;
         }
 
         canvas {
@@ -152,6 +153,56 @@
                 transform: translateY(-100%);
             }
         }
+
+        /* Streamer Menu Styles */
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 15px;
+        }
+
+        .menu-button {
+            width: 150px;
+            height: 40px;
+            border: none;
+            background-color: #333;
+            color: var(--secondary-color);
+            text-align: center;
+            line-height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: #444;
+        }
+
+        /* New Section Styles */
+        section {
+            padding: 50px 20px;
+            min-height: 100vh;
+            color: var(--secondary-color);
+            background-color: var(--background-color);
+            margin-top: 10px;
+        }
+
+        #about-me {
+            background-color: #1f1f1f;
+        }
+
+        #friends {
+            background-color: #2e2e2e;
+        }
+
+        #recordings {
+            background-color: #3e3e3e;
+        }
+
     </style>
 </head>
 <body>
@@ -184,6 +235,13 @@
             <span class="button-label">Discord</span>
         </div>
     </div>
+
+    <!-- Streamer Menu -->
+    <div class="menu-container">
+        <button class="menu-button" onclick="scrollToSection('about-me')">About Me</button>
+        <button class="menu-button" onclick="scrollToSection('friends')">Freunde</button>
+        <button class="menu-button" onclick="scrollToSection('recordings')">Aufnahmen</button>
+    </div>
     
     <div class="autor">
         <p>Made with ❤️ by Lokrogamer</p>
@@ -197,6 +255,22 @@
     <div class="ticker ticker-right">
         Black0815xx
     </div>
+
+    <!-- Sections for About Me, Friends, Recordings -->
+    <section id="about-me">
+        <h2>About Me</h2>
+        <p>Hier findest du alle Informationen zu mir, meiner Arbeit und meinem Leben!</p>
+    </section>
+
+    <section id="friends">
+        <h2>Freunde</h2>
+        <p>Hier findest du eine Liste meiner Freunde und Kollegen im Streaming.</p>
+    </section>
+
+    <section id="recordings">
+        <h2>Aufnahmen</h2>
+        <p>Hier kannst du meine letzten Aufnahmen und Streams sehen!</p>
+    </section>
     
     <script>
         const canvas = document.getElementById('fire');
@@ -263,6 +337,12 @@
 
         createParticles(150);
         animate();
+
+        // Scroll to section with smooth animation
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
