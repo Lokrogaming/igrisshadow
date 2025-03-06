@@ -25,9 +25,8 @@
         }
 
         .button {
-            width: 800px; /* Längliche Form */
-            max-width: 400px;
-            height: 800px
+            width: 300px; /* Angepasste Breite */
+            height: 300px; /* Angepasste Höhe */
             border: none;
             color: white;
             padding: 10px;
@@ -48,9 +47,9 @@
         }
 
         .button img {
-            width: 40px;
-            height: 40px;
-            
+            max-width: 80%;  /* Skaliert die Bilder auf 80% der Button-Breite */
+            max-height: 80%; /* Skaliert die Bilder auf 80% der Button-Höhe */
+            object-fit: contain; /* Verhindert Verzerrungen */
         }
 
         .button-twitch {
@@ -64,12 +63,14 @@
         .button-discord {
             background-color: #5b64f3;
         }
+
         #title {
             align-items: center;
             justify-content: center;
         }
+
         .titletxt {
-            width: 500px
+            width: 500px;
         }
         
     </style>
@@ -77,22 +78,20 @@
 <body>
     <canvas id="fire"></canvas>
     <div id="title" class="title">
-    <img src="logo-black0815xx.png" width="500px" height="500px" alt="logo1">
-    
-
-    <h3 id="titletxt">Black0815xx - Streamer, Youtuber</h3>
+        <img src="logo-black0815xx.png" width="500px" height="500px" alt="logo1">
+        <h3 id="titletxt">Black0815xx - Streamer, Youtuber</h3>
     </div>
-    
+
     <button class="button button-twitch" onclick="window.location.href='https://www.twitch.tv/Black0815xx'">
         <img src="twitch.png" alt="Twitch Icon">
     </button>
     
     <button class="button button-youtube" onclick="window.location.href='https://youtube.com/@black0815xx?si=xWxYagdGRkiVQ3BA'">
-        <img src="IMG_0556-removebg-preview.png" alt="YouTube Icon" width="auto">
+        <img src="IMG_0556-removebg-preview.png" alt="YouTube Icon">
     </button>
     
     <button class="button button-discord" onclick="window.location.href='https://discord.gg/EV65vE2J54'">
-        <img src="discord.png" alt="Discord Icon" width="auto">
+        <img src="discord.png" alt="Discord Icon">
     </button>
 
     <script>
