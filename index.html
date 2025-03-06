@@ -42,7 +42,7 @@
     </style>
 </head>
 <body>
-    <canvas id="snow"></canvas>
+    <canvas id="fire"></canvas>
 
     <h3 style="color: red;">Test</h3>
     <button class="button-twitch">Twitch</button>
@@ -50,21 +50,21 @@
     <button class="button-discord">Discord</button>
 
     <script>
-        const canvas = document.getElementById('snow');
+        const canvas = document.getElementById('fire');
         const ctx = canvas.getContext('2d');
         let width, height;
-        let snowflakes = [];
+        let particles = [];
 
         function resizeCanvas() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            snowflakes = snowflakes.map(flake => new Snowflake());
+            particles = particles.map(() => new Particle());
         }
 
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        class Snowflake {
+        class Particle {
             constructor() {
                 this.reset();
             }
@@ -74,7 +74,13 @@
                 this.y = Math.random() * height;
                 this.radius = Math.random() * 3 + 1;
                 this.speed = Math.random() * 2 + 1;
-                this.wind = Math.random() * 2 - 1;
+                this.wind = Math.random() * 1.5 - 0.75;
+                this.color = this.getRandomFireColor();
+            }
+
+            getRandomFireColor() {
+                const colors = ["#ff4500", "#ff6f1a", "#ff8c00", "#ff0000", "#ffae42"];
+                return colors[Math.floor(Math.random() * colors.length)];
             }
 
             update() {
@@ -88,26 +94,26 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = this.color;
                 ctx.fill();
                 ctx.closePath();
             }
         }
 
-        function createSnowflakes(count) {
-            snowflakes = Array.from({ length: count }, () => new Snowflake());
+        function createParticles(count) {
+            particles = Array.from({ length: count }, () => new Particle());
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            snowflakes.forEach(flake => {
-                flake.update();
-                flake.draw();
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
             });
             requestAnimationFrame(animate);
         }
 
-        createSnowflakes(150);
+        createParticles(150);
         animate();
     </script>
 </body>
