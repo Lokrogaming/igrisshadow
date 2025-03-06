@@ -24,6 +24,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            position: relative;
         }
 
         canvas {
@@ -34,6 +35,17 @@
             height: 100vh;
             z-index: -1;
             opacity: 0.8;
+        }
+
+        .background-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: auto;
+            opacity: 0.2;
+            z-index: -2;
         }
 
         .button-container {
@@ -93,22 +105,10 @@
         }
         
         .title {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            font-size: 3em;
+            font-weight: bold;
             text-align: center;
-        }
-
-        .title img {
-            max-width: 80%;
-            height: auto;
-        }
-
-        .title h3 {
-            font-size: 2.2em;
-            font-weight: 400;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .autor {
@@ -126,9 +126,10 @@
 </head>
 <body>
     <canvas id="fire"></canvas>
+    <img src="logo-black0815xx.png" class="background-logo" alt="Background Logo">
+    
     <div class="title">
-        <img src="logo-black0815xx.png" width="500px" height="500px" alt="logo1">
-        <h3 id="titletxt">Black0815xx - Streamer, Youtuber</h3>
+        Black0815xx - Streamer, Youtuber
     </div>
     
     <div class="button-container">
