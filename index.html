@@ -27,13 +27,13 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Abstand zwischen den Buttons */
+            gap: 20px; 
             margin-top: 20px;
         }
 
         .button {
-            width: 200px; /* Breite der Buttons */
-            height: 150px; /* Höhe der Buttons */
+            width: 200px; 
+            height: 150px; 
             border: none;
             color: white;
             padding: 10px;
@@ -78,20 +78,6 @@
         .titletxt {
             width: 500px;
         }
-
-        /* Neues Stylesheet für das eingebettete Twitch-Video */
-        .video-container {
-            width: 100%;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #000;
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px; /* Höhe des eingebetteten Streams */
-            border: none;
-        }
     </style>
 </head>
 <body>
@@ -115,10 +101,7 @@
         </button>
     </div>
 
-    <!-- Platz für das eingebettete Twitch-Video -->
-    <div class="video-container">
-        <iframe src="https://player.twitch.tv/?video=123456789&parent=example.com" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
-    </div>
+    
 
     <script>
         const canvas = document.getElementById('fire');
