@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Black0815xx</title>
     <style>
+        :root {
+            --primary-color: red;
+            --secondary-color: white;
+            --background-color: black;
+        }
+
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: black;
-            color: red;
+            background-color: var(--background-color);
+            color: var(--primary-color);
             margin: 0;
             padding: 0;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         canvas {
@@ -22,13 +33,15 @@
             width: 100vw;
             height: 100vh;
             z-index: -1;
+            opacity: 0.8;
         }
 
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .button-wrapper {
@@ -38,15 +51,15 @@
         }
 
         .button {
-            width: 200px;
-            height: 150px;
+            width: 180px;
+            height: 130px;
             border: none;
-            color: white;
+            color: var(--secondary-color);
             padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 35px;
+            border-radius: 25px;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
         }
@@ -74,38 +87,50 @@
 
         .button-label {
             margin-top: 5px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: white;
+            color: var(--secondary-color);
         }
         
-
-        div.title {
+        .title {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 50px;
-            width: 75%;
-            position: center;
-            center:0;
+            text-align: center;
         }
-        div.autor {
+
+        .title img {
+            max-width: 80%;
+            height: auto;
+        }
+
+        .title h3 {
+            font-size: 2.2em;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .autor {
             position: fixed;
             color: #a4acb1;
             background: transparent;
-            left: 0;
-            bottom:0;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+            font-size: 14px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
         
     </style>
 </head>
 <body>
     <canvas id="fire"></canvas>
-    <div id="title" class="title">
+    <div class="title">
         <img src="logo-black0815xx.png" width="500px" height="500px" alt="logo1">
         <h3 id="titletxt">Black0815xx - Streamer, Youtuber</h3>
     </div>
     
-
     <div class="button-container">
         <div class="button-wrapper">
             <button class="button button-twitch" onclick="window.location.href='https://www.twitch.tv/Black0815xx'">
@@ -132,8 +157,7 @@
         <p>Made with ❤️ by Lokrogamer</p>
         <a href="lokrogaming.github.io/lokrogaming/about-me.html">Show me more!</a>
     </div>
-        
-
+    
     <script>
         const canvas = document.getElementById('fire');
         const ctx = canvas.getContext('2d');
@@ -171,7 +195,6 @@
             update() {
                 this.y += this.speed;
                 this.x += this.wind;
-
                 if (this.y > height) this.reset();
                 if (this.x > width || this.x < 0) this.reset();
             }
