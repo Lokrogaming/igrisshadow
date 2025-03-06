@@ -24,30 +24,63 @@
             z-index: -1;
         }
 
-        .button-twitch, .button-youtube, .button-discord {
+        .button {
+            width: 220px;
+            height: 60px;
             border: none;
             color: white;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
-            width: 75%;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 30px; /* Rundere Buttons */
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
         }
 
-        .button-twitch { background-color: #6643a7; }
-        .button-youtube { background-color: #fa0404; }
-        .button-discord { background-color: #5b64f3; }
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .button img {
+            width: 35px;
+            height: 35px;
+            filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.7)); /* Schatteneffekt */
+        }
+
+        .button-twitch {
+            background-color: #6643a7;
+        }
+
+        .button-youtube {
+            background-color: #fa0404;
+        }
+
+        .button-discord {
+            background-color: #5b64f3;
+        }
     </style>
 </head>
 <body>
     <canvas id="fire"></canvas>
 
     <h3 style="color: red;">Test</h3>
-    <button class="button-twitch">Twitch</button>
-    <button class="button-youtube">YouTube</button>
-    <button class="button-discord">Discord</button>
+    
+    <button class="button button-twitch" onclick="window.location.href='https://www.twitch.tv/'">
+        <img src="IMG_0554-removebg-preview.png" alt="Twitch Icon"> Twitch
+    </button>
+    
+    <button class="button button-youtube" onclick="window.location.href='https://www.youtube.com/'">
+        <img src="IMG_0555-removebg-preview.png" alt="YouTube Icon"> YouTube
+    </button>
+    
+    <button class="button button-discord" onclick="window.location.href='https://www.discord.com/'">
+        <img src="IMG_0556-removebg-preview.png" alt="Discord Icon"> Discord
+    </button>
 
     <script>
         const canvas = document.getElementById('fire');
