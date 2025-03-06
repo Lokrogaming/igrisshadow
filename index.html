@@ -122,36 +122,25 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
 
-        @keyframes scroll-up {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(-100%);
-    }
-}
+        .ticker {
+            position: absolute;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0.8;
+        }
 
-.ticker {
-    position: absolute;
-    color: var(--primary-color);
-    font-size: 24px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    opacity: 0.8;
-    animation: scroll-up 5s linear infinite;
-}
+        .ticker-left {
+            left: 0;
+            bottom: 0;
+        }
 
-.ticker-left {
-    left: 0;
-    bottom: 0; /* Startet am unteren Rand */
-}
-
-.ticker-right {
-    right: 0;
-    bottom: 0; /* Startet ebenfalls am unteren Rand */
-}
-
+        .ticker-right {
+            right: 0;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -197,8 +186,50 @@
     <div class="ticker ticker-right">
         Black0815xx
     </div>
-    
+
     <script>
+        // Ticker Animations
+        window.addEventListener('load', () => {
+            const tickerLeft = document.querySelector('.ticker-left');
+            const tickerRight = document.querySelector('.ticker-right');
+            
+            // Set initial positions of the ticker
+            tickerLeft.style.bottom = '0px';
+            tickerRight.style.bottom = '0px';
+
+            // Set the height of the ticker text
+            const tickerHeight = 50;
+
+            // Initial Y positions of the tickers (start below the screen)
+            let leftY = window.innerHeight;
+            let rightY = window.innerHeight;
+
+            // Update the tickers' position continuously
+            function animateTicker() {
+                leftY -= 1;
+                rightY -= 1;
+
+                // Reset the ticker when it goes out of view
+                if (leftY < -tickerHeight) {
+                    leftY = window.innerHeight;
+                }
+                if (rightY < -tickerHeight) {
+                    rightY = window.innerHeight;
+                }
+
+                // Apply the new Y positions
+                tickerLeft.style.transform = `translateY(${leftY}px)`;
+                tickerRight.style.transform = `translateY(${rightY}px)`;
+
+                // Call the animation function on the next frame
+                requestAnimationFrame(animateTicker);
+            }
+
+            // Start the animation
+            animateTicker();
+        });
+
+        // Fire Animation (unchanged from original)
         const canvas = document.getElementById('fire');
         const ctx = canvas.getContext('2d');
         let width, height;
