@@ -103,7 +103,7 @@
             font-weight: bold;
             color: var(--secondary-color);
         }
-        
+
         .title {
             font-size: 3em;
             font-weight: bold;
@@ -121,7 +121,37 @@
             font-size: 14px;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
-        
+
+        /* Ticker Styles */
+        .ticker {
+            position: absolute;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0.8;
+            animation: scroll-up 5s linear infinite;
+        }
+
+        .ticker-left {
+            left: 0;
+            top: 10%;
+        }
+
+        .ticker-right {
+            right: 0;
+            top: 10%;
+        }
+
+        @keyframes scroll-up {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -154,9 +184,18 @@
             <span class="button-label">Discord</span>
         </div>
     </div>
+    
     <div class="autor">
         <p>Made with ❤️ by Lokrogamer</p>
         <a href="lokrogaming.github.io/lokrogaming/about-me.html">Show me more!</a>
+    </div>
+
+    <!-- Ticker Elements -->
+    <div class="ticker ticker-left">
+        Black0815xx
+    </div>
+    <div class="ticker ticker-right">
+        Black0815xx
     </div>
     
     <script>
